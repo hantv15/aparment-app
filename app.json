@@ -28,6 +28,7 @@
     "web": {
       "favicon": "./assets/favicon.png"
     },
-    "description": ""
+    "description": "App department",
+    "githubUrl": "https://github.com/hantv15/aparment-app"
   }
 }
