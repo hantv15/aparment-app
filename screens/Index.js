@@ -1,5 +1,5 @@
 import Onboarding from "./Onboarding";
-import Home from "./Home";
+import Home from "./Dashboard/Home"
 import Apartment from "./details/Apartment";
 
 export {

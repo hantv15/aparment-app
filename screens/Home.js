@@ -118,32 +118,6 @@ const Home = ({ navigation }) => {
             <View>
             <Text style={{ marginTop: SIZES.base, marginHorizontal: SIZES.padding, ...FONTS.h2 }}>Welcome</Text>
             </View>
-                {/* <View style={{ flexDirection: 'row', marginTop: SIZES.padding, paddingHorizontal: SIZES.base }}>
-                    <OptionItem
-                        icon={icons.airplane}
-                        bgColor={['#46aeff', '#5884ff']}
-                        label="Flight"
-                        onPress={() => { console.log("Flight") }}
-                    />
-                    <OptionItem
-                        icon={icons.train}
-                        bgColor={['#fddf90', '#fcda13']}
-                        label="Train"
-                        onPress={() => { console.log("Train") }}
-                    />
-                    <OptionItem
-                        icon={icons.bus}
-                        bgColor={['#e973ad', '#da5df2']}
-                        label="Bus"
-                        onPress={() => { console.log("Bus") }}
-                    />
-                    <OptionItem
-                        icon={icons.taxi}
-                        bgColor={['#fcaba8', '#fe6bba']}
-                        label="Taxi"
-                        onPress={() => { console.log("Taxi") }}
-                    />
-                </View> */}
 
                 <View style={{ flexDirection: 'row', marginTop: SIZES.radius, paddingHorizontal: SIZES.base }}>
                     <OptionItem

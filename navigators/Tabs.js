@@ -1,6 +1,6 @@
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import Home from '../screens/Home'
+import Home from '../screens/Dashboard/Home'
 import Notification from '../screens/Notification'
 import User from '../screens/details/User'
 import Service from '../screens/Service'
