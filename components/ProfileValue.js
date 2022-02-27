@@ -20,7 +20,7 @@ const ProfileValue = ({ icon, label, value, onPress, appTheme }) => {
                 alignItems: 'center',
                 justifyContent: 'center',
                 borderRadius: 20,
-                backgroundColor: appTheme?.backgroundColor3
+                // backgroundColor: appTheme?.backgroundColor3
             }}>
                 <Image
                     source={icon}
@@ -47,7 +47,7 @@ const ProfileValue = ({ icon, label, value, onPress, appTheme }) => {
                     </Text>
                 }
                 <Text style={{
-                    color: appTheme?.textColor,
+                    // color: appTheme?.textColor,
                     ...FONTS.h3
                 }}>
                     {value}
@@ -60,20 +60,12 @@ const ProfileValue = ({ icon, label, value, onPress, appTheme }) => {
                 style={{
                     width: 15,
                     height: 15,
-                    tintColor: appTheme?.tintColor
+                    // tintColor: appTheme?.tintColor
                 }} />
         </TouchableOpacity>
     )
 }
-function mapStateToProps(state) {
-    return {
-        appTheme: state.appTheme,
-    }
-}
-function mapDispatchToProps(dispatch) {
-    return {
-    }
-}
 
-export default connect(mapStateToProps, mapDispatchToProps)(ProfileValue);
+
+export default ProfileValue;
 

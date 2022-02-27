@@ -1,5 +1,5 @@
 
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import {
     View,
     Text,
@@ -8,25 +8,36 @@ import {
     StyleSheet,
     Image
 } from 'react-native';
-import { IconButton, TextButton, LineDivider, ProgressBar, ProfileValue, ProfileRadioButton } from '../../components';
-import { COLORS, FONTS, SIZES, icons, images } from '../../constants';
-import { connect } from 'react-redux';
-import { toggleTheme } from '../../stores/themeAction';
+import { IconButton, TextButton, LineDivider, ProgressBar, ProfileValue, ProfileRadioButton, CredentialsContext } from '../../components';
+import { LinearGradient } from 'expo-linear-gradient';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
-const Profile = ({appTheme, toggleTheme}) => {
+import { COLORS, FONTS, SIZES, icons, images } from '../../constants';
+
+const Profile = ({ navigation }) => {
 
     const [newDepartmentNotification, setNewDepartmentNotification] = useState(false);
     const [reminder, setReminder] = useState(false);
 
-    // Handler
-    function toggleThemeHandler(){
-        if(appTheme?.name == "light"){
-            toggleTheme("dark")
-        }else{
-            toggleTheme("light")
-        }
-    }
+    const { storedCredentials, setStoredCredentials } = useContext(CredentialsContext);
 
+    const { name, email, photoUrl } = storedCredentials;
+
+    const AvatarImg = photoUrl
+        ? {
+            uri: photoUrl,
+        }
+        : require('../../assets/img/expo-bg1.png');
+
+    const clearLogin = () => {
+        AsyncStorage.removeItem('flowerCribCredentials')
+            .then(() => {
+                setStoredCredentials("");
+            })
+            .catch((error) => console.log(error));
+    };
+
+    const image = { uri: 'https://images.unsplash.com/photo-1612151855475-877969f4a6cc?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8aGQlMjBpbWFnZXxlbnwwfHwwfHw%3D&w=1000&q=80' }
 
     function renderHeader() {
         return (
@@ -37,18 +48,18 @@ const Profile = ({appTheme, toggleTheme}) => {
                 justifyContent: 'space-between'
             }}>
                 <Text style={{
-                    color: appTheme?.textColor,
+                    color: COLORS.textColor,
                     ...FONTS.h1
                 }}
                 >
                     Profile
 
                 </Text>
-                
+
                 <IconButton
                     icon={icons.sun}
                     iconStyle={{
-                        tintColor: appTheme?.tintColor
+                        tintColor: COLORS.black
                     }}
                     onPress={() => toggleThemeHandler()}
                 />
@@ -64,7 +75,7 @@ const Profile = ({appTheme, toggleTheme}) => {
                 paddingHorizontal: SIZES.radius,
                 paddingVertical: 20,
                 borderRadius: SIZES.radius,
-                backgroundColor: appTheme?.backgroundColor2
+                backgroundColor: COLORS.primary3
             }}>
                 {/* Profile image */}
 
@@ -73,7 +84,7 @@ const Profile = ({appTheme, toggleTheme}) => {
                     height: 80
                 }}>
                     <Image
-                        source={images.profile}
+                        source={image}
                         style={{
                             width: "100%",
                             height: "100%",
@@ -159,20 +170,20 @@ const Profile = ({appTheme, toggleTheme}) => {
                         </Text>
 
                     </View>
-                    <TextButton
+                    {/* <TextButton
                     label="+Become"
                     contentContainerStyle={{
                         height: 35,
                         marginTop: SIZES.padding,
                         paddingHorizontal:SIZES.radius,
                         borderRadius:20,
-                        backgroundColor:appTheme?.backgroundColor4
+                        backgroundColor:COLORS.backgroundColor4
                         
                     }}
                     labelStyle={{
-                        color: appTheme?.textColor2
+                        color: COLORS.textColor2
                     }}
-                    />
+                    /> */}
 
                 </View>
 
@@ -185,14 +196,14 @@ const Profile = ({appTheme, toggleTheme}) => {
                 <ProfileValue
                     icon={icons.profile}
                     label="Name"
-                    value="By Huy"
+                    value={name || 'Olga Simpson'}
                 />
                 <LineDivider />
 
                 <ProfileValue
                     icon={icons.email}
                     label="Email"
-                    value="vandinhhuy2000@gmail.com"
+                    value={email || 'Olga Simpson'}
                 />
                 <LineDivider />
 
@@ -226,7 +237,7 @@ const Profile = ({appTheme, toggleTheme}) => {
                     isSelected={newDepartmentNotification}
                     onPress={() => {
                         setNewDepartmentNotification(!newDepartmentNotification)
-                            
+
                     }}
                 />
                 <LineDivider />
@@ -236,8 +247,8 @@ const Profile = ({appTheme, toggleTheme}) => {
                     label="Reminder"
                     isSelected={reminder}
                     onPress={() => {
-                        setReminder (!reminder)
-                           
+                        setReminder(!reminder)
+
                     }}
                 />
             </View>
@@ -246,7 +257,7 @@ const Profile = ({appTheme, toggleTheme}) => {
     return (
         <View style={{
             flex: 1,
-            backgroundColor: appTheme?.backgroundColor1
+            // backgroundColor: appTheme?.backgroundColor1
         }}>
             {/* Header */}
             {renderHeader()}
@@ -279,16 +290,6 @@ const styles = StyleSheet.create({
     }
 })
 
-function mapStateToProps(state){
-    return {
-        appTheme: state.appTheme,
-        error:state.error
-    }
-}
-function mapDispatchToProps(dispatch){
-    return{
-        toggleTheme: (themeType) => {return dispatch(toggleTheme(themeType))}
-    }
-}
 
-export default connect(mapStateToProps, mapDispatchToProps) (Profile);
+
+export default Profile

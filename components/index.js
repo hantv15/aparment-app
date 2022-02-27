@@ -7,6 +7,7 @@ import CategoryCard from "./CategoryCard";
 import ProgressBar from "./ProgressBar";
 import ProfileValue from "./ProfileValue";
 import ProfileRadioButton from "./ProfileRadioButton";
+import { CredentialsContext } from "./CredentialsContext";
 export {
     IconButton,
     TextButton,
@@ -16,5 +17,6 @@ export {
     ProgressBar,
     CategoryCard,
     ProfileValue,
-    ProfileRadioButton
+    ProfileRadioButton,
+    CredentialsContext
 }
