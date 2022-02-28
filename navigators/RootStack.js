@@ -12,7 +12,6 @@ import Login from '../screens/Login';
 import Signup from './../screens/Signup';
 import Tabs from './Tabs';
 import { CredentialsContext } from './../components/CredentialsContext';
-import Home from '../screens/Home';
 
 const Stack = createStackNavigator();
 
