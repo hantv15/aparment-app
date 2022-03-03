@@ -10,7 +10,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 // screens
 
 import Service from '../screens/Service';
-import Apartment from '../screens/details/Apartment';
+import Apartment from '../screens/Apartment';
 
 import { CredentialsContext } from './../components/CredentialsContext';
 

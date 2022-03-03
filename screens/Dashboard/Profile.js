@@ -194,6 +194,7 @@ const Profile = ({ navigation }) => {
         return (
             <View style={styles.profileSectionContainer}>
                 <ProfileValue
+                  onPress={() => navigation.navigate('Notification')}
                     icon={icons.profile}
                     label="Name"
                     value={name || 'Olga Simpson'}
@@ -251,6 +252,12 @@ const Profile = ({ navigation }) => {
 
                     }}
                 />
+                <LineDivider />
+                <ProfileRadioButton 
+                label='Logout'
+                onPress={clearLogin}
+                />
+                
             </View>
         )
     }

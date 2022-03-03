@@ -9,7 +9,7 @@ import {
 import { FlatList } from 'react-native-gesture-handler';
 import { IconButton, TextButton, VerticalDepartmentCard, LineDivider, CategoryCard } from '../../components';
 import { COLORS, FONTS, SIZES, icons, images, dummyData } from "../../constants"
-
+import Tabs from '../../navigators/Tabs';
 const Section = ({ containerStyle, title, onPress, children }) => {
     return (
         <View style={{
@@ -74,7 +74,7 @@ const Home = ({ navigation }) => {
                     {/* notification */}
                 </View>
                 <IconButton
-
+                    onPress={() => navigation.navigate('Search')}
                     icon={icons.notification}
                     iconStyle={{ tintColor: COLORS.black }} />
             </View>
@@ -223,7 +223,6 @@ const Home = ({ navigation }) => {
                 />
                 {/* Categories */}
                 {renderCategories()}
-
             </ScrollView>
         </View>
     )

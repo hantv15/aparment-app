@@ -1,9 +1,10 @@
-import Onboarding from "./Onboarding";
 import Home from "./Dashboard/Home"
-import Apartment from "./details/Apartment";
-
+import Apartment from "./Apartment";
+import Notification from "./Notification";
+import Profile from "./Dashboard/Profile";
 export {
-    Onboarding,
+    Notification,
     Home,
-    Apartment
+    Apartment,
+    Profile
 };

@@ -1,10 +1,4 @@
 export const beach = require("../assets/images/beach.jpeg");
-export const climbingHills = require("../assets/images/climbing_hills.jpg");
-export const frozenHills = require("../assets/images/frozen_hills.jpg");
-export const homeBanner = require("../assets/images/home_banner.jpg");
-export const onboardingImage = require("../assets/images/onboarding_image.jpg");
-export const skiVilla = require("../assets/images/ski_villa.jpg");
-export const skiVillaBanner = require("../assets/images/ski_villa_banner.jpg");
 const bg = require("../assets/images/bg.png")
 const bg_dark = require("../assets/images/bg_dark.png")
 const doc = require("../assets/images/doc.png")
@@ -26,12 +20,6 @@ const thumbnail_4 = require("../assets/images/thumbnail_4.png")
 
 export default {
     beach,
-    climbingHills,
-    frozenHills,
-    homeBanner,
-    onboardingImage,
-    skiVilla,
-    skiVillaBanner,
     bg,
     bg_dark,
     doc,
