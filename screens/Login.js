@@ -40,9 +40,6 @@ import KeyboardAvoidingWrapper from '../components/KeyboardAvoidingWrapper';
 // api client
 import axios from 'axios';
 
-// Google Signin
-import * as Google from 'expo-google-app-auth';
-
 // Async storage
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
@@ -61,8 +58,8 @@ const Login = ({ navigation }) => {
   const handleLogin = (credentials, setSubmitting) => {
     handleMessage(null);
     const url =
-    // 'http://127.0.0.1:8001/api/login'
-      
+      // 'http://apartment-system.xyz/api/login'
+
     'https://whispering-headland-00232.herokuapp.com/user/signin';
     axios
       .post(url, credentials)

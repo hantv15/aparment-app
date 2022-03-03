@@ -1,5 +1,5 @@
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import {
     StyleSheet,
     SafeAreaView,
@@ -12,13 +12,9 @@ import {
 import axios from 'axios';
 import tw from 'twrnc'
 import Icon from 'react-native-vector-icons/Ionicons';
-import { LinearGradient } from 'expo-linear-gradient';
-
-import { images, COLORS, FONTS, SIZES } from '../../constants';
-import Home from '../Home';
+import { images, COLORS, FONTS, SIZES } from '../constants';
 
 const Apartment = ({ navigation }) => {
-
     const [news, setNews] = useState([]);
 
     useEffect(() => {
@@ -27,9 +23,8 @@ const Apartment = ({ navigation }) => {
 
     function getNewsFromAPI() {
         axios.get(
-            // 'http://127.0.0.1:8000/department'
             'https://60b8400ab54b0a0017c03399.mockapi.io/apartment'
-            // 'http://139.180.196.74/test.json'
+            // 'http://apartment-system.xyz/api/apartment'
         )
             .then(async function (response) {
                 setNews(response.data);
@@ -43,6 +38,8 @@ const Apartment = ({ navigation }) => {
     if (!news) {
         return null
     }
+
+
     return (
         <SafeAreaView style={styles.container}>
             <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
@@ -60,7 +57,9 @@ const Apartment = ({ navigation }) => {
                 renderItem={({ item }) => {
                     return <View item={item} style={tw` item-center`}>
                         {/* <Image style={{width:50, height:50}} source={item.urlToImage ? {uri: item.urlToImage } : null}/> */}
-                        <TouchableOpacity style={tw`rounded-lg py-2 bg-gray-200 rounded-lg mt-2 m-4 shadow `}>
+                        <TouchableOpacity style={tw`rounded-lg py-2 bg-gray-200 rounded-lg mt-2 m-4 shadow `}
+                             onPress={() => navigation.navigate('Search')}
+                        >
                             <View style={tw`px-4`}>
                                 <Text style={tw`font-bold text-2xl text-red-500 pb-4`}>Thông tin căn hộ</Text>
                                 <Text welcome={true} style={tw`text-xl p-2`} >
@@ -71,44 +70,13 @@ const Apartment = ({ navigation }) => {
                                 <Text welcome={true} style={tw`text-xl p-2`}>
                                     <Icon name='clipboard-outline' size={20} />
                                     Tòa nhà:
-                                    {item.userId}</Text>
-                                {/* <Text welcome={true} style={tw`text-xl p-2`}>
-                                    <Icon name='ios-home-outline' size={20} />
-                                    Trạng thái:
                                     {item.cycle}</Text>
-                                <Text welcome={true} style={tw`text-xl p-2`}>
-                                    <Icon name='ios-home-outline' size={20} />
-                                    Trạng thái:
-                                    {item.prescription}</Text> */}
-
                             </View>
-
                         </TouchableOpacity>
-
 
                     </View>
                 }}
             />
-            {/* <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-                <View style={{ alignItems: 'center', marginHorizontal: SIZES.padding }}>
-                    <Text style={{ ...FONTS.h2 }}>Digital Ticket</Text>
-                    <Text style={{ color: COLORS.gray, marginTop: SIZES.padding, textAlign: 'center', ...FONTS.body3 }}>Easy solution to buy tickets for your travel, business trips, transportation, lodging and culinary.</Text>
-                </View>
-
-                <TouchableOpacity
-                    style={[styles.shadow, { marginTop: SIZES.padding * 2, width: '70%', height: 50, alignItems: 'center', justifyContent: 'center' }]}
-                    onPress={() => navigation.navigate("Home")}
-                >
-                    <LinearGradient
-                        style={{ height: '100%', width: '100%', alignItems: 'center', justifyContent: 'center', borderRadius: 15 }}
-                        colors={['#46aeff', '#5884ff']}
-                        start={{ x: 0, y: 0 }}
-                        end={{ x: 1, y: 0 }}
-                    >
-                        <Text style={{ color: COLORS.white, ...FONTS.h3 }}>Start !</Text>
-                    </LinearGradient>
-                </TouchableOpacity>
-            </View> */}
         </SafeAreaView>
     );
 };
